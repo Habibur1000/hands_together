@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Hands Together</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px; background: #faf8f4;">
+    <div class="form-box" style="background: #ffffff; padding: 50px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); text-align: center;">
+        <h2 style="font-family: 'Fraunces', serif; color: #1a7a5e; margin-bottom: 15px; font-size: 32px;">
+            Welcome, {{ user.name }}!
+        </h2>
+        <p style="color: #57534e; margin-bottom: 30px; font-size: 15px;">
+            You are logged in as <strong>{{ user.email }}</strong>
+        </p>
+        <p style="color: #78716c; margin-bottom: 30px; font-size: 14px;">
+            More features coming soon — donations, volunteering, and lost & found.
+        </p>
+        <a href="{{ url_for('logout') }}" class="btn-primary" style="display: inline-block; width: auto; padding: 12px 40px; text-decoration: none;">
+            Logout
+        </a>
+    </div>
+</div>
+</body>
+</html>

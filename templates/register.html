@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account - Hands Together</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="auth-wrapper">
+
+    <div class="left-panel">
+        <div class="brand">Hands Together</div>
+        <h1>Small acts create lasting change.</h1>
+        <p class="tagline">Join a community where people give what they no longer need and find what they truly do — donations, fundraising, volunteering, and lost & found, all in one place.</p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h3>6.2K+</h3>
+                <span>Lives touched</span>
+            </div>
+            <div class="stat-item">
+                <h3>3.1K+</h3>
+                <span>Volunteers</span>
+            </div>
+            <div class="stat-item">
+                <h3>640+</h3>
+                <span>Items reunited</span>
+            </div>
+        </div>
+
+        <div class="project-note">A BUBT CSE 328 academic project</div>
+    </div>
+
+    <div class="right-panel">
+        <div class="form-box">
+            <div class="mobile-brand">Hands Together</div>
+
+            <h2>Create your account</h2>
+            <p class="subtitle">It only takes a minute to join your community.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('register') }}">
+                <div class="field">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="field">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="01XXXXXXXXX" pattern="01[3-9][0-9]{8}" required>
+                    <div class="hint">Bangladeshi mobile number</div>
+                </div>
+
+                <div class="field">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div class="field">
+                    <label>Gender</label>
+                    <select name="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Account Type</label>
+                    <select name="role" required>
+                        <option value="user">General User</option>
+                        <option value="organization">Organization / Approved User</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <div class="password-wrap">
+                        <input type="password" name="password" id="password" placeholder="Minimum 8 characters" minlength="8" required>
+                        <button type="button" class="toggle-btn" onclick="togglePassword('password', this)">Show</button>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Confirm Password</label>
+                    <div class="password-wrap">
+                        <input type="password" name="confirm" id="confirm" placeholder="Re-enter your password" minlength="8" required>
+                        <button type="button" class="toggle-btn" onclick="togglePassword('confirm', this)">Show</button>
+                    </div>
+                </div>
+
+                <div class="row-between">
+                    <label class="checkbox-wrap">
+                        <input type="checkbox" required>
+                        I agree to the Terms & Privacy Policy
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Create Free Account</button>
+            </form>
+
+            <p class="bottom-link">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Sign in</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function togglePassword(id, btn) {
+    const input = document.getElementById(id);
+    if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+    } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+    }
+}
+</script>
+</body>
+</html>

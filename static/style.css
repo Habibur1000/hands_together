@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #faf8f4;
+    color: #1c1917;
+    min-height: 100vh;
+}
+
+.auth-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left-panel {
+    flex: 1;
+    background: linear-gradient(160deg, #1a7a5e, #125a44);
+    color: #ffffff;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-panel::before,
+.left-panel::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.left-panel::before {
+    width: 320px;
+    height: 320px;
+    top: -100px;
+    right: -100px;
+}
+
+.left-panel::after {
+    width: 200px;
+    height: 200px;
+    bottom: -60px;
+    left: -60px;
+}
+
+.brand {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.left-panel h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.left-panel p.tagline {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e8f5f1;
+    margin-bottom: 45px;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    color: #faf8f4;
+    margin-bottom: 4px;
+}
+
+.stat-item span {
+    font-size: 13px;
+    color: #e8f5f1;
+    opacity: 0.85;
+}
+
+.project-note {
+    font-size: 13px;
+    color: #e8f5f1;
+    opacity: 0.7;
+    position: relative;
+    z-index: 1;
+}
+
+.right-panel {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 420px;
+}
+
+.form-box .mobile-brand {
+    display: none;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a7a5e;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    color: #1c1917;
+    margin-bottom: 8px;
+}
+
+.form-box .subtitle {
+    font-size: 15px;
+    color: #57534e;
+    margin-bottom: 30px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1c1917;
+    margin-bottom: 6px;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 11px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: #1c1917;
+    background-color: #faf8f4;
+    border: 1px solid #e7e5e4;
+    border-radius: 10px;
+    outline: none;
+    transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #1a7a5e;
+    box-shadow: 0 0 0 3px rgba(26, 122, 94, 0.15);
+    background-color: #ffffff;
+}
+
+.field .password-wrap {
+    position: relative;
+}
+
+.field .password-wrap input {
+    padding-right: 60px;
+}
+
+.toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #1a7a5e;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.row-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    font-size: 14px;
+}
+
+.checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #57534e;
+}
+
+.checkbox-wrap input {
+    width: 16px;
+    height: 16px;
+    accent-color: #1a7a5e;
+}
+
+.link-small {
+    color: #1a7a5e;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-small:hover {
+    text-decoration: underline;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 13px;
+    background-color: #1a7a5e;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: #125a44;
+}
+
+.bottom-link {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 14px;
+    color: #57534e;
+}
+
+.bottom-link a {
+    color: #1a7a5e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.bottom-link a:hover {
+    text-decoration: underline;
+}
+
+.hint {
+    font-size: 13px;
+    color: #78716c;
+    margin-top: 5px;
+}
+
+.message {
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.message.success {
+    background-color: #e8f5f1;
+    color: #125a44;
+    border: 1px solid #1a7a5e;
+}
+
+.message.error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+@media (max-width: 900px) {
+    .left-panel {
+        display: none;
+    }
+
+    .form-box .mobile-brand {
+        display: block;
+    }
+
+    .right-panel {
+        padding: 30px 20px;
+    }
+}
