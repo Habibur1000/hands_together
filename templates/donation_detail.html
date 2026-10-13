@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ donation.title }} - Hands Together</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-wrapper">
+    <nav class="top-nav">
+        <a href="{{ url_for('home') }}" class="nav-brand">Hands Together</a>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('donations') }}">Browse Donations</a>
+            <a href="{{ url_for('donate') }}">Donate</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="detail-container">
+        <a href="{{ url_for('donations') }}" class="back-link">← Back to Donations</a>
+
+        <div class="detail-card">
+            {% if donation.photo_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + donation.photo_filename) }}" alt="{{ donation.title }}" class="detail-image">
+            {% else %}
+                <div class="detail-image detail-image-placeholder">No Photo</div>
+            {% endif %}
+
+            <div class="detail-info">
+                <div class="card-badges">
+                    <span class="badge badge-category">{{ donation.category }}</span>
+                    <span class="badge badge-free">Free</span>
+                </div>
+
+                <h1>{{ donation.title }}</h1>
+                <p class="detail-desc">{{ donation.description }}</p>
+
+                <div class="detail-meta">
+                    <div><strong>Condition:</strong> {{ donation.condition }}</div>
+                    <div><strong>Location:</strong> {{ donation.location }}</div>
+                    <div><strong>Donor:</strong> {{ donation.donor.name }}</div>
+                    <div><strong>Posted:</strong> {{ donation.posted_at.strftime('%d %b %Y') }}</div>
+                </div>
+
+                {% if donation.donor_id == current_user.id %}
+                    <div class="own-post-note">
+                        This is your donation.
+                        <a href="{{ url_for('delete_donation', donation_id=donation.id) }}" class="btn-delete" onclick="return confirm('Remove this donation?')">Delete</a>
+                    </div>
+                {% else %}
+                    <div class="contact-box">
+                        <p>Interested in this item? Contact the donor:</p>
+                        <p class="contact-info"><strong>{{ donation.donor.name }}</strong></p>
+                        <p class="contact-info">Phone: {{ donation.donor.phone }}</p>
+                        <p class="contact-info">Email: {{ donation.donor.email }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

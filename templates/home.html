@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hands Together - Together, We Can Help</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="site-nav">
+    <a href="{{ url_for('home') }}" class="site-logo">
+        <span class="logo-badge">H</span>
+        <span class="logo-text">
+            Hands<br>Together
+        </span>
+    </a>
+
+    <div class="site-nav-links">
+        <a href="{{ url_for('home') }}" class="nav-active">Home</a>
+        <a href="{{ url_for('donations') }}">Donate</a>
+        <a href="#">Request Help</a>
+        <a href="#">Fundraise</a>
+        <a href="#">Volunteer</a>
+        <a href="#">Lost &amp; Found</a>
+    </div>
+
+    <div class="site-nav-auth">
+        <a href="{{ url_for('login') }}" class="nav-signin">Sign In</a>
+        <a href="{{ url_for('register') }}" class="nav-join">Join Free</a>
+    </div>
+</nav>
+
+<section class="home-hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-label">Bangladesh Community Platform</div>
+            <h1 class="hero-title">
+                Together,<br>
+                We Can<br>
+                <span class="hero-yellow">Help.</span>
+            </h1>
+            <p class="hero-desc">
+                One platform to donate unused items, support medical campaigns,
+                find volunteer activities, and reunite lost belongings — connecting
+                people who need help with people who want to give it.
+            </p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('donate') }}" class="btn-hero-primary">Donate an Item</a>
+                <a href="#" class="btn-hero-outline">Request Help</a>
+            </div>
+        </div>
+
+        <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800" alt="Community volunteers packing donations" class="hero-image">
+            <div class="hero-badge">
+                <span class="hero-badge-icon">💛</span>
+                <div>
+                    <div class="hero-badge-num">6,200+ Lives Touched</div>
+                    <div class="hero-badge-sub">Across Bangladesh</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-box">
+            <div class="stat-num">2,400+</div>
+            <div class="stat-label">Items Donated</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">180+</div>
+            <div class="stat-label">Active Campaigns</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">3,100+</div>
+            <div class="stat-label">Volunteers</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">640+</div>
+            <div class="stat-label">Lost Items Reunited</div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="features-header">
+        <h2>What You Can Do Here</h2>
+        <p>Five ways to give and receive support in your community.</p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card feature-blue">
+            <div class="feature-icon">📦</div>
+            <h3>Donate Items</h3>
+            <p>Give away clothes, books, furniture, electronics, and more to people who need them.</p>
+            <a href="{{ url_for('donate') }}" class="feature-btn btn-blue">Explore →</a>
+        </div>
+
+        <div class="feature-card feature-yellow">
+            <div class="feature-icon">🤝</div>
+            <h3>Request Help</h3>
+            <p>Post a request for something you need — other members can respond and offer assistance.</p>
+            <a href="#" class="feature-btn btn-yellow">Explore →</a>
+        </div>
+
+        <div class="feature-card feature-red">
+            <div class="feature-icon">❤️</div>
+            <h3>Medical Fundraising</h3>
+            <p>Create or support verified campaigns for medical treatment costs.</p>
+            <a href="#" class="feature-btn btn-red">Explore →</a>
+        </div>
+
+        <div class="feature-card feature-green">
+            <div class="feature-icon">🌱</div>
+            <h3>Volunteer &amp; Social Work</h3>
+            <p>Join blood donation drives, tree plantations, food distribution, and teaching programmes.</p>
+            <a href="#" class="feature-btn btn-green">Explore →</a>
+        </div>
+
+        <div class="feature-card feature-purple">
+            <div class="feature-icon">🔍</div>
+            <h3>Lost &amp; Found</h3>
+            <p>Report a lost or found item — phones, wallets, pets, documents, and more.</p>
+            <a href="#" class="feature-btn btn-purple">Explore →</a>
+        </div>
+
+        <div class="feature-card feature-gray">
+            <div class="feature-icon">🏢</div>
+            <h3>Organizations</h3>
+            <p>Registered NGOs and charities can post campaigns, events, and volunteer opportunities.</p>
+            <a href="#" class="feature-btn btn-gray">Explore →</a>
+        </div>
+    </div>
+</section>
+
+<section class="recent-section">
+    <div class="recent-header">
+        <h2>Recent Donations</h2>
+        <a href="{{ url_for('donations') }}" class="view-all">View all →</a>
+    </div>
+
+    <div class="recent-grid">
+        <div class="recent-card">
+            <div class="recent-image-wrap">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600" alt="Academic books" class="recent-image">
+                <span class="recent-cat-badge">Books</span>
+                <span class="recent-free-badge">Free</span>
+            </div>
+            <div class="recent-body">
+                <h3>Academic Books — Class 6-10</h3>
+                <div class="recent-meta-row">
+                    <span class="meta-chip">Good condition</span>
+                    <span class="meta-author">by Karim H.</span>
+                </div>
+                <div class="recent-bottom">
+                    <span>📍 Mirpur, Dhaka</span>
+                    <span>2h ago</span>
+                </div>
+                <a href="{{ url_for('donations') }}" class="btn-request-item">Request this item</a>
+            </div>
+        </div>
+
+        <div class="recent-card">
+            <div class="recent-image-wrap">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600" alt="Wheelchair" class="recent-image">
+                <span class="recent-cat-badge">Medical</span>
+                <span class="recent-free-badge">Free</span>
+            </div>
+            <div class="recent-body">
+                <h3>Folding Wheelchair — Aluminium Frame</h3>
+                <div class="recent-meta-row">
+                    <span class="meta-chip">Excellent condition</span>
+                    <span class="meta-author">by Nasrin B.</span>
+                </div>
+                <div class="recent-bottom">
+                    <span>📍 Uttara, Dhaka</span>
+                    <span>5h ago</span>
+                </div>
+                <a href="{{ url_for('donations') }}" class="btn-request-item">Request this item</a>
+            </div>
+        </div>
+
+        <div class="recent-card">
+            <div class="recent-image-wrap">
+                <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600" alt="Children's clothes" class="recent-image">
+                <span class="recent-cat-badge">Clothes</span>
+                <span class="recent-free-badge">Free</span>
+            </div>
+            <div class="recent-body">
+                <h3>Children's Winter Clothes (Ages 4-8)</h3>
+                <div class="recent-meta-row">
+                    <span class="meta-chip">Good condition</span>
+                    <span class="meta-author">by Rafi A.</span>
+                </div>
+                <div class="recent-bottom">
+                    <span>📍 Mohammadpur, Dhaka</span>
+                    <span>1d ago</span>
+                </div>
+                <a href="{{ url_for('donations') }}" class="btn-request-item">Request this item</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-box">
+        <h2>Ready to make a difference?</h2>
+        <p>Join thousands of people across Bangladesh who are helping each other every day.</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('register') }}" class="btn-cta-primary">Create Account</a>
+            <a href="#" class="btn-cta-outline">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-col footer-brand-col">
+            <h3>Hands Together</h3>
+            <p>Together, We Can Help. A community platform connecting donors, helpers, volunteers, and those in need across Bangladesh.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Platform</h4>
+            <a href="{{ url_for('donate') }}">Donate Items</a>
+            <a href="#">Request Help</a>
+            <a href="#">Medical Fundraising</a>
+            <a href="#">Volunteer</a>
+            <a href="#">Lost &amp; Found</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Account</h4>
+            <a href="{{ url_for('login') }}">Sign in</a>
+            <a href="{{ url_for('register') }}">Create account</a>
+            <a href="{{ url_for('home') }}">Back to homepage</a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div>© 2024 Hands Together. Academic Project — BUBT, Dept. of CSE.</div>
+        <div>Group 1, Section 4 · Supervised by Nahida Akter Tanjila</div>
+    </div>
+</footer>
+
+</body>
+</html>

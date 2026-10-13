@@ -6,20 +6,41 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px; background: #faf8f4;">
-    <div class="form-box" style="background: #ffffff; padding: 50px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); text-align: center;">
-        <h2 style="font-family: 'Fraunces', serif; color: #1a7a5e; margin-bottom: 15px; font-size: 32px;">
-            Welcome, {{ user.name }}!
-        </h2>
-        <p style="color: #57534e; margin-bottom: 30px; font-size: 15px;">
-            You are logged in as <strong>{{ user.email }}</strong>
-        </p>
-        <p style="color: #78716c; margin-bottom: 30px; font-size: 14px;">
-            More features coming soon — donations, volunteering, and lost & found.
-        </p>
-        <a href="{{ url_for('logout') }}" class="btn-primary" style="display: inline-block; width: auto; padding: 12px 40px; text-decoration: none;">
-            Logout
-        </a>
+<div class="page-wrapper">
+    <nav class="top-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-brand">Hands Together</a>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}" class="active">Dashboard</a>
+            <a href="{{ url_for('donations') }}">Browse Donations</a>
+            <a href="{{ url_for('donate') }}">Donate</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dash-container">
+        <div class="dash-header">
+            <h1>Welcome, {{ user.name }}!</h1>
+            <p>You are logged in as {{ user.email }}</p>
+        </div>
+
+        <div class="dash-stats">
+            <div class="dash-stat">
+                <h3>{{ my_donations }}</h3>
+                <p>Your Donations</p>
+            </div>
+            <div class="dash-stat">
+                <h3>{{ total_donations }}</h3>
+                <p>Total Donations Available</p>
+            </div>
+        </div>
+
+        <div class="dash-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <a href="{{ url_for('donate') }}" class="btn-primary">+ Donate an Item</a>
+                <a href="{{ url_for('donations') }}" class="btn-outline">Browse All Donations</a>
+            </div>
+        </div>
     </div>
 </div>
 </body>

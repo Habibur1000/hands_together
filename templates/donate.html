@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donate an Item - Hands Together</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-wrapper">
+    <nav class="top-nav">
+        <a href="{{ url_for('home') }}" class="nav-brand">Hands Together</a>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('donations') }}">Browse Donations</a>
+            <a href="{{ url_for('donate') }}" class="active">Donate</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Donate an Item</h1>
+        <p class="form-subtitle">Share something useful with someone who needs it.</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data" class="donation-form">
+            <div class="field">
+                <label>Item Name</label>
+                <input type="text" name="title" placeholder="e.g. Winter Jacket" required>
+            </div>
+
+            <div class="field">
+                <label>Category</label>
+                <select name="category" required>
+                    <option value="">Select category</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Books">Books</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Mobile Phones">Mobile Phones</option>
+                    <option value="Computers">Computers</option>
+                    <option value="Food">Food</option>
+                    <option value="Wheelchairs">Wheelchairs</option>
+                    <option value="Medical Equipment">Medical Equipment</option>
+                    <option value="Educational Materials">Educational Materials</option>
+                    <option value="Household Items">Household Items</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Condition</label>
+                <select name="condition" required>
+                    <option value="">Select condition</option>
+                    <option value="New">New</option>
+                    <option value="Like New">Like New</option>
+                    <option value="Good">Good</option>
+                    <option value="Used">Used</option>
+                    <option value="Needs Repair">Needs Repair</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Description</label>
+                <textarea name="description" rows="4" placeholder="Describe the item, its size, and any details" required></textarea>
+            </div>
+
+            <div class="field">
+                <label>Pickup Location</label>
+                <input type="text" name="location" placeholder="e.g. Mirpur, Dhaka" required>
+            </div>
+
+            <div class="field">
+                <label>Photo of the Item</label>
+                <input type="file" name="photo" id="photoInput" accept="image/*" class="file-input">
+                <div class="hint">JPG, PNG, GIF, or WEBP — max 5MB</div>
+                <div id="previewWrap" class="preview-wrap" style="display:none;">
+                    <img id="previewImg" class="preview-img" alt="Preview">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Post Donation</button>
+        </form>
+
+        <a href="{{ url_for('dashboard') }}" class="back-link">← Back to Dashboard</a>
+    </div>
+</div>
+
+<script>
+const photoInput = document.getElementById('photoInput');
+const previewWrap = document.getElementById('previewWrap');
+const previewImg = document.getElementById('previewImg');
+
+if (photoInput) {
+    photoInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewWrap.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            previewWrap.style.display = 'none';
+        }
+    });
+}
+</script>
+</body>
+</html>

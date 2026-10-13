@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Donations - Hands Together</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="page-wrapper">
+    <nav class="top-nav">
+        <a href="{{ url_for('home') }}" class="nav-brand">Hands Together</a>
+        <div class="nav-links">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('donations') }}" class="active">Browse Donations</a>
+            <a href="{{ url_for('donate') }}">Donate</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </nav>
+
+    <div class="list-container">
+        <div class="list-header">
+            <div>
+                <h1>Available Donations</h1>
+                <p class="list-subtitle">{{ donations|length }} item{% if donations|length != 1 %}s{% endif %} available</p>
+            </div>
+            <a href="{{ url_for('donate') }}" class="btn-primary">+ Donate an Item</a>
+        </div>
+
+        <form method="GET" class="filter-bar">
+            <input type="text" name="search" placeholder="Search items, description, or location" value="{{ search }}">
+
+            <select name="category">
+                <option value="">All Categories</option>
+                <option value="Clothes" {% if category == 'Clothes' %}selected{% endif %}>Clothes</option>
+                <option value="Books" {% if category == 'Books' %}selected{% endif %}>Books</option>
+                <option value="Furniture" {% if category == 'Furniture' %}selected{% endif %}>Furniture</option>
+                <option value="Electronics" {% if category == 'Electronics' %}selected{% endif %}>Electronics</option>
+                <option value="Mobile Phones" {% if category == 'Mobile Phones' %}selected{% endif %}>Mobile Phones</option>
+                <option value="Computers" {% if category == 'Computers' %}selected{% endif %}>Computers</option>
+                <option value="Food" {% if category == 'Food' %}selected{% endif %}>Food</option>
+                <option value="Wheelchairs" {% if category == 'Wheelchairs' %}selected{% endif %}>Wheelchairs</option>
+                <option value="Medical Equipment" {% if category == 'Medical Equipment' %}selected{% endif %}>Medical Equipment</option>
+                <option value="Educational Materials" {% if category == 'Educational Materials' %}selected{% endif %}>Educational Materials</option>
+                <option value="Household Items" {% if category == 'Household Items' %}selected{% endif %}>Household Items</option>
+            </select>
+
+            <button type="submit" class="btn-filter">Filter</button>
+            <a href="{{ url_for('donations') }}" class="btn-clear">Clear</a>
+        </form>
+
+        {% if donations %}
+            <div class="donation-grid">
+                {% for d in donations %}
+                <div class="donation-card">
+                    {% if d.photo_filename %}
+                        <img src="{{ url_for('static', filename='uploads/' + d.photo_filename) }}" alt="{{ d.title }}" class="card-image">
+                    {% else %}
+                        <div class="card-image card-image-placeholder">No Photo</div>
+                    {% endif %}
+
+                    <div class="card-body">
+                        <div class="card-badges">
+                            <span class="badge badge-category">{{ d.category }}</span>
+                            <span class="badge badge-free">Free</span>
+                        </div>
+
+                        <h3>{{ d.title }}</h3>
+                        <p class="card-desc">{{ d.description[:100] }}{% if d.description|length > 100 %}...{% endif %}</p>
+
+                        <div class="card-meta">
+                            <span>Condition: {{ d.condition }}</span>
+                            <span>Location: {{ d.location }}</span>
+                            <span>By {{ d.donor.name }}</span>
+                        </div>
+
+                        <div class="card-actions">
+                            <a href="{{ url_for('donation_detail', donation_id=d.id) }}" class="btn-view">View Details</a>
+                            {% if d.donor_id == current_user.id %}
+                                <a href="{{ url_for('delete_donation', donation_id=d.id) }}" class="btn-delete" onclick="return confirm('Remove this donation?')">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h3>No donations found</h3>
+                <p>Try adjusting your search or be the first to donate an item.</p>
+                <a href="{{ url_for('donate') }}" class="btn-primary">Donate an Item</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
