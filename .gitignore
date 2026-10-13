@@ -2,6 +2,5 @@ __pycache__/
 *.pyc
 instance/
 .env
-.venv/
 venv/
 .vscode/
